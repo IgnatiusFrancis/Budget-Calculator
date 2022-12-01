@@ -12,7 +12,6 @@
         crossorigin="anonymous"
       />
       <link rel="stylesheet" href="main.css" />
-      <script type="text/javascript" src="main.js"></script>
     </head>
     <title>Document</title>
   </head>
@@ -26,7 +25,7 @@
                 <strong>Monthly Income:</strong>
               </span>
               <span>
-                <strong> &#8358; <span id="income">40,000</span></strong>
+                <strong> &#8358; <span id="incomeValue">40,000</span></strong>
               </span>
             </article>
             <hr />
@@ -35,7 +34,7 @@
                 <strong>Age:</strong>
               </span>
               <span>
-                <strong><span id="age">40</span></strong>
+                <strong><span id="ageValue">40</span></strong>
               </span>
             </article>
             <hr />
@@ -44,7 +43,7 @@
                 <strong>Gender:</strong>
               </span>
               <span>
-                <strong><span id="gender">Male</span></strong>
+                <strong><span id="genderValue">Male</span></strong>
               </span>
             </article>
             <hr />
@@ -53,7 +52,7 @@
                 <strong>Marital Status:</strong>
               </span>
               <span>
-                <strong> <span id="marital_status">Single</span></strong>
+                <strong> <span id="maritalValue">Single</span></strong>
               </span>
             </article>
             <hr />
@@ -62,7 +61,7 @@
                 <strong>Number of Dependents:</strong>
               </span>
               <span>
-                <strong><span id="dependent">4</span></strong>
+                <strong><span id="dependentValue">4</span></strong>
               </span>
             </article>
             <hr />
@@ -71,7 +70,7 @@
                 <strong>Rent:</strong>
               </span>
               <span>
-                <strong> &#8358;<span id="rent">40000</span></strong>
+                <strong> &#8358;<span id="rentValue">40000</span></strong>
               </span>
             </article>
             <hr />
@@ -80,7 +79,7 @@
                 <strong>Food:</strong>
               </span>
               <span>
-                <strong> &#8358;<span id="food">30000</span></strong>
+                <strong> &#8358;<span id="foodValue">30000</span></strong>
               </span>
             </article>
             <hr />
@@ -89,7 +88,7 @@
                 <strong>Utilities:</strong>
               </span>
               <span>
-                <strong> &#8358;<span id="utilities">30</span></strong>
+                <strong> &#8358;<span id="utilitiesValue">30</span></strong>
               </span>
             </article>
             <hr />
@@ -98,7 +97,7 @@
                 <strong>Insurance:</strong>
               </span>
               <span>
-                <strong> &#8358;<span id="insurance">20000</span></strong>
+                <strong> &#8358;<span id="insuranceValue">20000</span></strong>
               </span>
             </article>
             <hr />
@@ -107,7 +106,9 @@
                 <strong>Transportaion:</strong>
               </span>
               <span>
-                <strong> &#8358;<span id="transportation">20000</span></strong>
+                <strong>
+                  &#8358;<span id="transportationValue">20000</span></strong
+                >
               </span>
             </article>
             <hr />
@@ -116,7 +117,9 @@
                 <strong>Miscelleneous:</strong>
               </span>
               <span>
-                <strong> &#8358;<span id="miscelleneous">20000</span></strong>
+                <strong>
+                  &#8358;<span id="miscelleneousValue">20000</span></strong
+                >
               </span>
             </article>
           </div>
@@ -125,24 +128,71 @@
             style="display: flex; justify-content: space-between"
           >
             <div>
-              <span>INCOME: </span>
-              <span>&#8358;40</span>
+              <span>TOTAL: </span>
+              <span id="total">&#8358;40</span>
             </div>
             <div>
               <span>EXPENSES: </span>
-              <span>&#8358;40</span>
+              <span id="expenses">&#8358;40</span>
             </div>
             <div>
               <span>BALANCE: </span>
-              <span>&#8358;40</span>
+              <span id="balance">&#8358;40</span>
             </div>
           </div>
         </div>
       </div>
     </div>
     <script>
-      const income = localStorage.getItem("income");
-      document.getElementById(income).textContent = income;
+      const income = JSON.parse(sessionStorage.getItem("income"));
+      const age = JSON.parse(sessionStorage.getItem("age"));
+      console.log(age);
+      const gender = JSON.parse(sessionStorage.getItem("gender"));
+      console.log(gender);
+      const marital_status = JSON.parse(
+        sessionStorage.getItem("marital_status")
+      );
+      const dependent = JSON.parse(sessionStorage.getItem("dependent"));
+      const rent = JSON.parse(sessionStorage.getItem("rent"));
+      const food = JSON.parse(sessionStorage.getItem("food"));
+      const utilities = JSON.parse(sessionStorage.getItem("utilities"));
+      const insurance = JSON.parse(sessionStorage.getItem("insurance"));
+      const transportation = JSON.parse(
+        sessionStorage.getItem("transportation")
+      );
+      const miscelleneous = JSON.parse(sessionStorage.getItem("miscelleneous"));
+
+      document.getElementById("incomeValue").textContent = income;
+      document.getElementById("ageValue").textContent = age;
+      document.getElementById("genderValue").textContent = gender;
+      document.getElementById("maritalValue").textContent = marital_status;
+      document.getElementById("dependentValue").textContent = dependent;
+      document.getElementById("rentValue").textContent = rent;
+      document.getElementById("foodValue").textContent = food;
+      document.getElementById("utilitiesValue").textContent = utilities;
+      document.getElementById("insuranceValue").textContent = insurance;
+      document.getElementById("transportationValue").textContent =
+        transportation;
+      document.getElementById("miscelleneousValue").textContent = miscelleneous;
+
+      // let total_Income =
+      // let expenses = Number(
+      //   rent + food + utilities + insurance + transportation + miscelleneous
+      // );
+      let expenses =
+        Number(rent) +
+        Number(food) +
+        Number(utilities) +
+        Number(insurance) +
+        Number(transportation) +
+        Number(miscelleneous);
+
+      const total = income / dependent;
+      const balance = total - expenses;
+
+      document.getElementById("expenses").textContent = expenses;
+      document.getElementById("total").textContent = total;
+      document.getElementById("balance").textContent = balance;
     </script>
   </body>
 </html>

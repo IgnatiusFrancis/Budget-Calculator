@@ -12,7 +12,7 @@
         crossorigin="anonymous"
       />
       <link rel="stylesheet" href="main.css" />
-      <script type="text/javascript" src="main.js"></script>
+      <!-- <script type="text/javascript" src="main.js"></script> -->
     </head>
     <title>Document</title>
   </head>
@@ -120,26 +120,6 @@
         </div>
       </div>
     </div>
-    <script>
-      let form = document.getElementById("form");
-      const income = document.getElementById("income");
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        // const fd = new FormData(form);
-        // const f = Object.fromEntries(fd);
-        // // console.log(f);
-        // const json = JSON.stringify(f);
-        // // console.log(json);
-        // let session = window.sessionStorage.setItem("income", json);
-        // console.log(session);
-        // window.location.href = "success.html";
-        const incomeValue = income.value;
-        // console.log(incomeValue);
-        const item = sessionStorage.setItem("item", incomeValue);
-        console.log(`Json: ${item}`);
-        window.location.href = "success.html";
-      });
-    </script>
+    <script src="/main.js"></script>
   </body>
 </html>
